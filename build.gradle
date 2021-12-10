@@ -34,7 +34,7 @@ apply plugin: 'opensearch.opensearchplugin'
 apply plugin: 'opensearch.testclusters'
 
 opensearchplugin {
-  name = 'opensearch-analisys-pinyin'
+  name = 'analysis-pinyin'
   description = 'Pinyin Analysis for OpenSearch'
   classname = 'org.opensearch.plugin.analysis.pinyin.AnalysisPinyinPlugin'
   licenseFile = rootProject.file('LICENSE.txt')
@@ -66,13 +66,13 @@ githubRelease.doFirst {
 
   // rename zip file
   def currentVersion = version.replace('-SNAPSHOT', '')
-  def filename = "build/distributions/opensearch-analisys-pinyin-${version}.zip"
-  Files.copy(file("build/distributions/opensearch-analisys-pinyin-${version}.zip").toPath(), file(filename).toPath())
+  def filename = "build/distributions/opensearch-analysis-pinyin-${version}.zip"
+  Files.copy(file("build/distributions/opensearch-analysis-pinyin-${version}.zip").toPath(), file(filename).toPath())
 
   // configuration
   github {
     owner = 'aparo'
-    repo = 'opensearch-analisys-pinyin'
+    repo = 'opensearch-analysis-pinyin'
     token = System.getProperty('GITHUB_TOKEN')
     tagName = currentVersion
     assets = [ filename ]
